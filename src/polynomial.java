@@ -120,23 +120,21 @@ public class polynomial {
     }
     public double getValueAtPoint (double x){
         node tempHead = this.head;
-        int maxDegree = this.head.degree;
-        double result = tempHead.coefficient * Math.pow(x,tempHead.degree);
-        tempHead = tempHead.next;
-        for (int i = maxDegree - 1; i > 0; i--){
-            if (tempHead != null) {
-                if (tempHead.degree == i) {
-                    result += (tempHead.coefficient * Math.pow(x, tempHead.degree));
-                    tempHead = tempHead.next;
-                }
-            }
-        }
-        if (tempHead != null)
-            if (isZero(tempHead.degree)){
+        int max_degree = tempHead.degree;
+        double result = 0;
+        for (int i = max_degree; i > 0; i--){
+            if (tempHead != null && tempHead.degree == i) {
                 result += tempHead.coefficient;
+                result *= x;
+                tempHead = tempHead.next;
             }
+            else result *= x;
+        }
         return result;
+
     }
+
+
     public void print(){
         if (this.head == null) return;
         node temp = this.head;
@@ -154,6 +152,7 @@ public class polynomial {
         }
         System.out.println();
     }
+
     private void rewriteNode(node node1,node next, double c, int d){
         node1.next = next;
         node1.degree = d;
@@ -164,9 +163,5 @@ public class polynomial {
         return(Math.abs(x) <= epsilon);
     }
 
-    public void resetMonomial( int d, double c){
-        this.head.coefficient = c;
-        this.head.degree = d;
-    }
 
 }

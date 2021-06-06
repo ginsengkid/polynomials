@@ -15,7 +15,7 @@ public class field {
     }
 
     private double function(double x){
-        return (x*x + 2*x + 123*x*x*x);
+        return (x*x*x + x);
     }
 
     public point[] getArray() {
