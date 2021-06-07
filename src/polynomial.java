@@ -10,20 +10,15 @@ public class polynomial {
         }
     }
     private node head;
-    private double epsilon = 1e-5;
 
 
     public polynomial(int d, double c){
         head = new node(d, c);
     }
 
-    public polynomial(polynomial p){
-        head = new node(p.head.degree,p.head.coefficient);
-    }
-
     public void multiplyWithNumber(double digit) {
         if (isZero(digit)) {
-            new polynomial(0,1);
+            head = new node(1,0);
             return;
         }
         node temp = this.head;
@@ -86,6 +81,7 @@ public class polynomial {
 
         if (newP == null && previous != null) previous.next = temp;
     }
+
     public polynomial multiplyPolynomials (polynomial p){
         if (p.head == null || head == null) return null;
         if ((isZero(p.head.coefficient) && p.head.next == null) || (isZero(this.head.coefficient) && this.head.next == null)) return new polynomial(1,0);
@@ -118,6 +114,7 @@ public class polynomial {
         }
         return result;
     }
+
     public double getValueAtPoint (double x){
         node tempHead = this.head;
         int max_degree = tempHead.degree;
@@ -130,8 +127,8 @@ public class polynomial {
             }
             else result *= x;
         }
+        if (tempHead != null && tempHead.degree == 0) result += tempHead.coefficient;
         return result;
-
     }
 
 
@@ -159,7 +156,14 @@ public class polynomial {
         node1.coefficient = c;
     }
 
+    public void rewriteMonomial(double c,int d){
+        this.head.coefficient = c;
+        this.head.degree = d;
+        this.head.next = null;
+    }
+
     private boolean isZero (double x) {
+        double epsilon = 1e-5;
         return(Math.abs(x) <= epsilon);
     }
 
