@@ -14,7 +14,8 @@ public class field {
         }
     }
 
-    private double function(double x){
+
+    public double function(double x){
         return (0.8213*x*x*x*x*x + 4*x*x*x*x + 123.608*x*x*x + 199*x*x + x + 8);
     }
 
