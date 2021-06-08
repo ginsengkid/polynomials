@@ -26,6 +26,9 @@ public class test {
             System.out.printf("%15.6E", firstP.getValueAtPoint(array[i].getY()));
             System.out.printf("%15.6E", secondP.getValueAtPoint(array[i].getY()));
             System.out.println();
+
+
         }
+
     }
 }

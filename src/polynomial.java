@@ -133,6 +133,7 @@ public class polynomial {
 
 
     public void print(){
+
         if (this.head == null) return;
         node temp = this.head;
         System.out.printf("%15.6E", temp.coefficient);

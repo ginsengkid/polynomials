@@ -1,7 +1,6 @@
 public class field {
 
     private point[] array;
-
     //найти amount точек на отрезке [a,b]
     public field(int amount, double a, double b){
         array = new point[amount];

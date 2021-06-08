@@ -1,6 +1,7 @@
 public class newton {
     private polynomial p;
     public newton(field f){
+
         point[] array = f.getArray();
         double[] differencesArray = find_differences(array);
         p = new polynomial(0,array[0].getY());

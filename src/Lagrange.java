@@ -1,6 +1,7 @@
 public class Lagrange {
     polynomial result;
     public Lagrange(field p){
+
         point[] array = p.getArray();
         int len = array.length;
 
