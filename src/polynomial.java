@@ -16,6 +16,16 @@ public class polynomial {
         head = new node(d, c);
     }
 
+    public polynomial(polynomial p1){
+        node mainhead = p1.head;
+        this.head = new node(mainhead.degree, mainhead.coefficient);
+        node temphead = this.head;
+        while (mainhead.next != null){
+            temphead.next = new node(mainhead.degree, mainhead.coefficient);
+            mainhead = mainhead.next;
+        }
+    }
+
     public void multiplyWithNumber(double digit) {
         if (isZero(digit)) {
             head = new node(1,0);
@@ -29,7 +39,8 @@ public class polynomial {
     }
     public void addPolynomials (polynomial p){
         if (p.head == null || head == null) return;
-        if ((p.head.coefficient == 0 && p.head.next == null) || (this.head.coefficient == 0 && this.head.next == null)) return;
+        if ((p.head.coefficient == 0 && p.head.next == null)) return;
+        if (this.head.coefficient == 0 && this.head.next == null) new polynomial(p);
         node temp, newP;
         if (this.head.degree <= p.head.degree) {
             node tempH = p.head;
@@ -140,6 +151,10 @@ public class polynomial {
         System.out.print(" * X^" + temp.degree);
         temp = temp.next;
         while (temp != null){
+            if (isZero(temp.coefficient)){
+                temp = temp.next;
+                continue;
+            }
             if (temp.coefficient >= 0) System.out.print("   +");
             System.out.printf("%15.6E", temp.coefficient);
             if (!isZero(temp.degree)){
@@ -167,6 +182,4 @@ public class polynomial {
         double epsilon = 1e-5;
         return(Math.abs(x) <= epsilon);
     }
-
-
 }

@@ -13,9 +13,9 @@ public class field {
         }
     }
 
-
+    //0.8213*x*x*x*x*x + 4*x*x*x*x + 123.608*x*x*x + 199*x*x + x + 8
     public double function(double x){
-        return (0.8213*x*x*x*x*x + 4*x*x*x*x + 123.608*x*x*x + 199*x*x + x + 8);
+        return (Math.sin(x * x / 2));
     }
 
     public point[] getArray() {

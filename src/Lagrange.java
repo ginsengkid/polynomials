@@ -19,7 +19,6 @@ public class Lagrange {
                 p1.addPolynomials(new polynomial(0,-array[0].getX()));
             }
 
-
             for (int j = 1; j < len; j ++){
                 if (j == i || (i == 0 && j == 1)) continue;
                 polynomial p2 = new polynomial(1,1);
@@ -28,9 +27,8 @@ public class Lagrange {
                 p1 = p1.multiplyPolynomials(p2);
             }
             p1.multiplyWithNumber(array[i].getY()/sum);
-            if (i == 0) result = p1;
+            if (i == 0) result = new polynomial(p1);
             else result.addPolynomials(p1);
-
         }
     }
 

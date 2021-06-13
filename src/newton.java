@@ -21,6 +21,7 @@ public class newton {
             temp1 = new polynomial(0,1);
             temp2.rewriteMonomial(0,0);
         }
+
     }
 
     public double[] find_differences(point[] array){
